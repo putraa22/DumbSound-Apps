@@ -1,0 +1,17 @@
+.app__hero-banner {
+  height: 80vh;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__banner-title {
+    width: 35%;
+    position: absolute;
+    left: 380px;
+    top: 188px;
+  }
+}

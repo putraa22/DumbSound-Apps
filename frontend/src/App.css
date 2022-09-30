@@ -1,0 +1,241 @@
+.app {
+  background-color: var(--main-color);
+  font-family: var(--font-base);
+}
+
+.app__container-payment {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(22, 22, 22, 1);
+}
+
+.app__container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: "#161616";
+}
+
+.btn__color {
+  background-color: var(--red-color);
+  color: white;
+}
+
+.Nav__icons {
+  margin-right: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: rgba(238, 70, 34, 1);
+}
+.Nav__icons2 {
+  margin-right: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: rgba(238, 70, 34, 1);
+}
+
+.cardThumb {
+  border: 7px solid #3a3a3a !important;
+  background-color: #3a3a3a !important;
+  /* cursor: pointer; */
+}
+
+.cardThumb:hover {
+  box-shadow: 1px 1px 2px 2px rgb(51, 51, 51);
+  box-shadow: -1px -1px -1px 3px rgb(51, 51, 51);
+}
+
+.cardBody {
+  background-color: #3a3a3a !important;
+  color: white;
+}
+.imageThumb {
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.year {
+  font-size: 11px;
+  display: flex;
+  margin-left: 94%;
+  margin-top: 2px;
+}
+
+.titleCard {
+  display: flex;
+  margin-left: -15px;
+  margin-top: -7px !important;
+}
+
+/* Login Section */
+.modal__login {
+  background-color: rgba(22, 22, 22, 1);
+}
+
+.app__list-transaction {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(22, 22, 22, 1);
+}
+
+/* Add Artis Form  */
+.artist-form-page {
+  /* height: 1000px; */
+  min-height: 100vh;
+  width: 100%;
+  background-color: #000000;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.text-add-artist {
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.input-form-music {
+  /* height: 70px; */
+  width: 100%;
+}
+
+.form-input-type-artist {
+  /* height: 70px; */
+  width: 100%;
+}
+
+/* .button-container-artist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.button-submit-artist {
+  /* width: 350px; */
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 25px;
+  margin-top: 20px;
+  background: #f58033 !important;
+  border-color: #f58033 !important;
+}
+
+.button-submit-artist:hover {
+  background: #f58033 !important;
+}
+
+.button-submit-artist:focus {
+  background: #f58033 !important;
+  outline: none !important;
+  border: none !important;
+}
+
+.btn-primary.btn-lg {
+  outline-color: #f58033 !important;
+}
+
+.button-submit-artist.btn .tn-primary.btn-lg {
+  outline-color: #f58033 !important;
+  border-color: #f58033 !important ;
+}
+
+/* Add Artis Form  */
+
+/* Music Form */
+.song-page {
+  /* min-height: 87vh; */
+  min-height: 100vh;
+  width: 100%;
+  background-color: black;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-text-and-form {
+  width: 100%;
+  /* height: 70%; */
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.text-incoming {
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.form-input-type-music {
+  /* height: 70px; */
+  width: 100%;
+}
+
+.attach-song {
+  background-color: bisque;
+}
+
+.label-input-cover input[type="file"] {
+  display: none;
+}
+
+.label-input-cover {
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  cursor: pointer;
+  /* height: 70px; */
+  width: 250px;
+  font-size: 20px;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+.label-input-song input[type="file"] {
+  display: none;
+}
+
+.label-input-song {
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 12px;
+  cursor: pointer;
+  /* height: 70px; */
+  color: white;
+  width: 120px;
+  font-size: 20px;
+
+  border-radius: 5px;
+}
+
+.cover-preview {
+  max-width: 500px;
+  border-radius: 20px;
+}
+
+.container-cover-song {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Music Form */

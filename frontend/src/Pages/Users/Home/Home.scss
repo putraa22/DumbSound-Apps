@@ -1,0 +1,22 @@
+.app__container-home {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(22, 22, 22, 1);
+
+  .home__header {
+    h2 {
+      font-family: var(--font-base);
+      font-weight: 700;
+      color: rgba(238, 70, 34, 1);
+      text-align: center;
+      margin-top: 1rem;
+    }
+  }
+
+  .container__card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}

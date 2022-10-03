@@ -105,7 +105,7 @@ const ResponsiveAppBar = () => {
                           <QueueMusic />
                           <b className="ms-2">Add Music</b>
                         </Dropdown.Item>
-                        <Dropdown.Item style={{ color: "#fff" }} className="d-flex align-items-center">
+                        <Dropdown.Item style={{ color: "#fff" }} className="d-flex align-items-center" onClick={() => navigate("/add-artist")}>
                           <AccountBoxOutlinedIcon />
                           <b className="ms-2">Add Artis</b>
                         </Dropdown.Item>

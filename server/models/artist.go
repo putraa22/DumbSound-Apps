@@ -7,7 +7,7 @@ type Artist struct {
 	Name        string  `json:"name" gorm:"type:varchar(225)"`
 	Old         string  `json:"old" gorm:"type:varchar(50)"`
 	Type        string  `json:"type" gorm:"type:varchar(50)"`
-	StartCareer int     `json:"startCareer" gorm:"type:int"`
+	StartCareer string  `json:"startCareer" gorm:"type:varchar(50)"`
 	Musics      []Music `json:"-"`
 	// MusicID		int			`json:"music_id"`
 	// Music
@@ -20,6 +20,6 @@ type ArtistResponse struct {
 	Name        string  `json:"name" gorm:"type:varchar(225)"`
 	Old         string  `json:"old" gorm:"type:varchar(50)"`
 	Type        string  `json:"type" gorm:"type:varchar(50)"`
-	StartCareer int     `json:"startCareer" gorm:"type:int"`
+	StartCareer string  `json:"startCareer" gorm:"type:varchar(50)"`
 	Musics      []Music `json:"-"`
 }

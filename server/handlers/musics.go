@@ -38,6 +38,10 @@ func (h *handlerMusic) FindMusics(w http.ResponseWriter, r *http.Request) {
 
 	// Untuk mengembed path file di property thumbnailMusic
 	for i, p := range musics {
+		musics[i].Attache = os.Getenv("PATH_FILE") + p.Attache
+	}
+
+	for i, p := range musics {
 		musics[i].ThumbNail = os.Getenv("PATH_FILE") + p.ThumbNail
 	}
 
@@ -63,13 +67,14 @@ func (h *handlerMusic) GetMusic(w http.ResponseWriter, r *http.Request) {
 
 	musicresponse := musicsdto.MusicResponse{
 		Title:     music.Title,
-		ThumbNail: os.Getenv("PATH_FILE") + music.ThumbNail,
+		ThumbNail: music.ThumbNail,
 		Year:      music.Year,
 		Attache:   music.Attache,
 		ArtistID:  music.ArtistID,
 	}
 
 	// path untuk membuat api file image
+	music.Attache = os.Getenv("PATH_FILE") + music.Attache
 	music.ThumbNail = os.Getenv("PATH_FILE") + music.ThumbNail
 
 	w.WriteHeader(http.StatusOK)
@@ -83,6 +88,9 @@ func (h *handlerMusic) CreateMusic(w http.ResponseWriter, r *http.Request) {
 	// Get dataFile from midleware and store to filename variable here ...
 	dataContex := r.Context().Value("dataFile")
 	filename := dataContex.(string)
+
+	dataThumb := r.Context().Value("dataThumb")
+	filethumb := dataThumb.(string)
 
 	artist_id, _ := strconv.Atoi(r.FormValue("artist_id"))
 
@@ -114,8 +122,8 @@ func (h *handlerMusic) CreateMusic(w http.ResponseWriter, r *http.Request) {
 
 	music := models.Music{
 		Title:     request.Title,
-		ThumbNail: filename,
-		Attache:   request.Attache,
+		ThumbNail: filethumb,
+		Attache:   filename,
 		Year:      request.Year,
 		ArtistID:  request.ArtistID,
 	}

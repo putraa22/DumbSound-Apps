@@ -9,15 +9,17 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
+	// "github.com/golang-jwt/jwt/request"
 )
 
-func UploadFile(next http.HandlerFunc) http.HandlerFunc {
+func UploadAudio(next http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Upload file
 		// FormFile returns the first file for the given key `myFile`
 		// it also returns the FileHeader so we can get the Filename,
 		// the Header and the size of the file
-		file, _, err := r.FormFile("thumbnail")
+		// r.ParseMultipartForm(10 * 1024 * 1024)
+		file, _, err := r.FormFile("attache")
 
 		if err != nil {
 			fmt.Println(err)
@@ -36,14 +38,16 @@ func UploadFile(next http.HandlerFunc) http.HandlerFunc {
 			return
 		}
 
-		filetype := http.DetectContentType(buff)
+		// filetype := http.DetectContentType(buff)
+		filetype := "audio/mp3"
 		fmt.Println(filetype)
-		if filetype != "image/jpeg" && filetype != "image/png" && filetype != "image/jpg" && filetype != "video/mp4" {
-			w.WriteHeader(http.StatusBadRequest)
-			response := dto.ErrorResult{Code: http.StatusBadRequest, Message: "The provided file format is not allowed. Please upload a JPEG or PNG image"}
-			json.NewEncoder(w).Encode(response)
-			return
-		}
+
+		// if filetype != "audio/mp3" && filetype != "image/png" && filetype != "image/jpg" && filetype != "image/jpeg" {
+		// 	w.WriteHeader(http.StatusBadRequest)
+		// 	response := dto.ErrorResult{Code: http.StatusBadRequest, Message: "The provided file format is not allowed. Please upload a JPEG or PNG image"}
+		// 	json.NewEncoder(w).Encode(response)
+		// 	return
+		// }
 
 		_, err = file.Seek(0, io.SeekStart)
 		if err != nil {
@@ -53,7 +57,7 @@ func UploadFile(next http.HandlerFunc) http.HandlerFunc {
 			return
 		}
 
-		const MAX_UPLOAD_SIZE = 100 << 20 // 10MB
+		const MAX_UPLOAD_SIZE = 4000 << 20 // 10MB
 		r.ParseMultipartForm(MAX_UPLOAD_SIZE)
 		if r.ContentLength > MAX_UPLOAD_SIZE {
 			w.WriteHeader(http.StatusBadRequest)
@@ -83,10 +87,10 @@ func UploadFile(next http.HandlerFunc) http.HandlerFunc {
 		tempFile.Write(fileBytes)
 
 		data := tempFile.Name()
-		filethumb := data[8:] // split uploads/
+		filename := data[8:] // split uploads/
 
 		// add filename to ctx
-		ctx := context.WithValue(r.Context(), "dataThumb", filethumb)
+		ctx := context.WithValue(r.Context(), "dataFile", filename)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }

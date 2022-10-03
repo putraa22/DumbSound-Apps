@@ -10,7 +10,7 @@ type MusicRequest struct {
 
 type CreateMusicRequest struct {
 	Title     string `json:"title" form:"title" validate:"required"`
-	ThumbNail string `json:"thumbnail" form:"thumbnail" validate:"required"`
+	ThumbNail string `json:"thumbnail" form:"thumbnail" `
 	Attache   string `json:"attache" form:"attache" gorm:"type:text"`
 	Year      string `json:"year" form:"year"`
 	ArtistID  int    `json:"artist_id" form:"artist_id" gorm:"type: int"`

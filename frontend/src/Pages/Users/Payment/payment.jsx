@@ -57,9 +57,9 @@ const Pay = () => {
         onSuccess: function (result) {
           navigate("/");
         },
-        // onPending: function (result) {
-        //   navigate("/profile");
-        // },
+        onPending: function (result) {
+          navigate("/");
+        },
         onError: function (result) {
           /* You may add your own implementation here */
         },

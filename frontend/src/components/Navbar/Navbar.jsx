@@ -10,7 +10,7 @@ import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import ReceiptLongOutlinedIcon from "@mui/icons-material/ReceiptLongOutlined";
 import { Dropdown } from "react-bootstrap";
 import Logo from "../../assets/logo.png";
-import ImageLogo from "../../assets/avatar.png";
+import ImageLogo from "../../assets/kucing.jpg";
 import { Button } from "@mui/material";
 import Login from "../Modal/Login";
 import Register from "../Modal/Register";
@@ -51,7 +51,7 @@ const ResponsiveAppBar = () => {
             justifyContent: "space-between",
           }}
         >
-          <img src={Logo} alt="logo" />
+          <img src={Logo} alt="logo" style={{ cursor: "pointer" }} onClick={() => navigate("/")} />
           {!state.isLogin ? (
             <Box
               sx={{
@@ -102,15 +102,15 @@ const ResponsiveAppBar = () => {
                     {state.isAdmin ? (
                       <>
                         <Dropdown.Item style={{ color: "#fff" }} className="d-flex align-items-center" onClick={() => navigate("/add-music")}>
-                          <QueueMusic />
+                          <QueueMusic className="Nav__icons2" />
                           <b className="ms-2">Add Music</b>
                         </Dropdown.Item>
                         <Dropdown.Item style={{ color: "#fff" }} className="d-flex align-items-center" onClick={() => navigate("/add-artist")}>
-                          <AccountBoxOutlinedIcon />
+                          <AccountBoxOutlinedIcon className="Nav__icons2" />
                           <b className="ms-2">Add Artis</b>
                         </Dropdown.Item>
                         <Dropdown.Item style={{ color: "#fff" }} className="d-flex align-items-center mt-2" onClick={() => navigate("/list-transaction")}>
-                          <ReceiptLongOutlinedIcon />
+                          <ReceiptLongOutlinedIcon className="Nav__icons2" />
                           <b className="ms-2">Transaction</b>
                         </Dropdown.Item>
                       </>

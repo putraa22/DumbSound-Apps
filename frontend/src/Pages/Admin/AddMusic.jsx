@@ -108,7 +108,7 @@ function AddMusic() {
             as="select"
             className="mr-sm-2 mb-3 bg-dark text-light form-input-type-music"
             id="inlineFormCustomSelect"
-            custom
+            name="artist_id"
             onChange={handleChange}
             //   onChange={handleOnChangeOptionSinger}
           >

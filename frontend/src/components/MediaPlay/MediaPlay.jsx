@@ -1,8 +1,8 @@
 import React from "react";
 import ReactJkMusicPlayer from "react-jinke-music-player";
-import "react-jinke-music-player/lib/styles/index.less";
+import "react-jinke-music-player/assets/index.css";
 
-function MediaPlay({ playIndex, audioLists }) {
+function MediaPlay(props) {
   const options = {
     showDownload: false,
     mode: "full",
@@ -14,7 +14,7 @@ function MediaPlay({ playIndex, audioLists }) {
     autoPlay: false,
   };
 
-  return <ReactJkMusicPlayer playIndex={playIndex} audioLists={audioLists} {...options} />;
+  return <ReactJkMusicPlayer playIndex={props.playIndex} audioLists={props.audioLists} {...options} />;
 }
 
 export default MediaPlay;

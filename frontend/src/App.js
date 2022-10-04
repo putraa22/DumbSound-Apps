@@ -8,6 +8,7 @@ import AddMusic from "./Pages/Admin/AddMusic";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { API, setAuthToken } from "./config/api";
 import { UserContext } from "./context/userContext";
+import MediaPlay from "./components/MediaPlay/MediaPlay";
 import "./App.css";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
         .then((response) => {
           const payload = response.data.data.user;
           payload.token = localStorage.token;
-          console.log("ini data user", payload);
+
           if (!payload) {
             return dispatch({
               type: "AUTH_ERROR",
@@ -39,13 +40,11 @@ function App() {
             type: "AUTH_SUCCESS",
             payload,
           });
-          console.log("ini state", state);
         })
         .catch((err) => {
           dispatch({
             type: "AUTH_ERROR",
           });
-          console.log(state);
         });
     } catch (err) {
       console.log(err);
@@ -68,6 +67,7 @@ function App() {
           <Route path="/list-transaction" element={<ListTransaction />} />
           <Route path="/add-artist" element={<AddArtis />} />
           <Route path="/add-music" element={<AddMusic />} />
+          <Route path="/media" element={<MediaPlay />} />
         </Routes>
       </div>
     </BrowserRouter>

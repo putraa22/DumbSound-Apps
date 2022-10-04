@@ -16,17 +16,6 @@ const Home = () => {
         </div>
         <Container maxWidth="lg" className="container__card-list">
           <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
         </Container>
       </div>
     </>

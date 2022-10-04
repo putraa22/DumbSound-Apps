@@ -9,7 +9,8 @@ import MediaPlay from "../MediaPlay/MediaPlay";
 import "./Cards.scss";
 import { API } from "../../config/api";
 import { UserContext } from "../../context/userContext";
-import { useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
+// import { useNavigate } from "react-router-dom";
 
 const Cards = ({ playIndex, audioLists }) => {
   // let navigate = useNavigate();
@@ -19,8 +20,8 @@ const Cards = ({ playIndex, audioLists }) => {
   // show = { showAudio }
   // playIndex = { currentPlay }
   const [songs, setSongs] = useState([]);
-  const [artists, setArtists] = useState([]);
-  const [song, setSong] = useState();
+  // const [artists, setArtists] = useState([]);
+  const [song, setSong] = useState([]);
   const [currentPlay, setCurrentPlay] = useState(0);
   const [showAudio, setShowAudio] = useState(false);
 
@@ -34,41 +35,53 @@ const Cards = ({ playIndex, audioLists }) => {
     }
   };
 
+  let { data: artists, isLoading } = useQuery("MusicsCache", async () => {
+    const response = await API.get("/artists");
+
+    return response.data.data;
+
+    // const result = response.data.data.map((item) => ({
+    //   title: item.title,
+    //   singer: item.artist.name,
+    //   cover: item.thumbnail,
+    //   musicSrc: path + item.attache,
+    // }));
+    // setSong(result);
+  });
+
   const loadMusic = async () => {
     try {
       const response = await API.get("/musics");
       setSongs(response.data.data);
 
-      const result = response.data.data.map((item) => ({
-        name: item.title,
-        singer: item.singer.name,
-        cover: path + item.thumbnail,
-        musicSrc: path + item.attache,
-        year: item.year,
-      }));
-      setSong(result);
-      console.log("ini result", result);
+      // const result = response.data.data.map((item) => ({
+      //   title: item.title,
+      //   singer: item.artists.name,
+      //   cover: path + item.thumbnail,
+      //   musicSrc: path + item.attache,
+      // }));
+      // setSong(result);
+      // console.log("ini result", result);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const loadArtist = async () => {
-    try {
-      const response = await API.get("/artists");
-      setArtists(response.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const loadArtist = async () => {
+  //   try {
+  //     const response = await API.get("/artists");
+  //     setArtists(response.data.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
-    loadArtist();
     loadMusic();
   }, []);
 
   return (
-    <div>
+    <>
       {songs?.map((item, index) => (
         <Card
           key={index}
@@ -88,7 +101,7 @@ const Cards = ({ playIndex, audioLists }) => {
               }}
               component="img"
               height="140"
-              image={path + item.thumbnail}
+              image={item.thumbnail}
               alt="Image"
             />
             <CardContent>
@@ -112,16 +125,29 @@ const Cards = ({ playIndex, audioLists }) => {
                 }}
                 variant="body2"
               >
-                {item.singer.name}
+                {isLoading ? (
+                  <></>
+                ) : (
+                  artists?.map((artis) => {
+                    let artisName = "";
+                    if (artis.id === item.artist_id) {
+                      artisName = artis.name;
+                    }
+                    return artisName;
+                  })
+                )}
               </Typography>
             </CardContent>
           </CardActionArea>
+          <audio controls autoplay>
+            <source src={item.attache} type="audio/mpeg" />
+          </audio>
         </Card>
       ))}
-      <div>
+      {/* <div>
         <MediaPlay audioLists={song} show={showAudio} playIndex={currentPlay} />
-      </div>
-    </div>
+      </div> */}
+    </>
   );
 };
 
